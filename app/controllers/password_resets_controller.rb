@@ -59,9 +59,6 @@ class PasswordResetsController < ApplicationController
     def valid_user
       unless (@user && @user.activated? &&
               @user.authenticated?(:reset, params[:id]))
-        # Side implementation. Inform the user that,
-        # the email is not correct/valid/activated
-        flash[:danger] =
         redirect_to root_url
       end
     end
